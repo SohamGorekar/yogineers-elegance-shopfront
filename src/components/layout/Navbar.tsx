@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Search, ShoppingCart, User, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -6,6 +5,8 @@ import { Button } from '@/components/ui/button';
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [visibleCount, setVisibleCount] = useState(6);
+  const allProducts = [/* ...15 products... */];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,9 +25,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-white/90 backdrop-blur-md shadow-lg py-2' : 'bg-transparent py-4'
-    }`}>
+    <nav className="fixed top-0 w-full z-50 transition-all duration-300 bg-white/80 backdrop-blur-lg shadow-md py-4">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
           {/* Logo */}

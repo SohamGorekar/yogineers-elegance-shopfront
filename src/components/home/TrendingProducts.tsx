@@ -1,10 +1,9 @@
-
-import React from 'react';
+import React, { useState } from 'react';
 import { Heart, Star, ShoppingCart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const TrendingProducts = () => {
-  const products = [
+  const allProducts = [
     {
       id: 1,
       name: "Premium Wireless Headphones",
@@ -64,8 +63,131 @@ const TrendingProducts = () => {
       rating: 4.8,
       reviews: 91,
       badge: "Trending"
-    }
+    },
+    {
+      id: 7,
+      name: "Eco-Friendly Water Bottle",
+      price: 29.99,
+      originalPrice: 39.99,
+      image: "https://images.unsplash.com/photo-1519864600265-abb23847ef2c",
+      rating: 4.5,
+      reviews: 78,
+      badge: "Eco"
+    },
+    {
+      id: 8,
+      name: "Bluetooth Speaker",
+      price: 59.99,
+      originalPrice: 79.99,
+      image: "https://images.unsplash.com/photo-1519125323398-675f0ddb6308",
+      rating: 4.7,
+      reviews: 102,
+      badge: "Hot"
+    },
+    {
+      id: 9,
+      name: "Classic Table Lamp",
+      price: 89.99,
+      originalPrice: 119.99,
+      image: "https://images.unsplash.com/photo-1465101046530-73398c7f28ca",
+      rating: 4.4,
+      reviews: 54,
+      badge: "New"
+    },
+    {
+      id: 10,
+      name: "Modern Floor Rug",
+      price: 129.99,
+      originalPrice: 159.99,
+      image: "https://images.unsplash.com/photo-1503602642458-232111445657",
+      rating: 4.6,
+      reviews: 61,
+      badge: "Trending"
+    },
+    {
+      id: 11,
+      name: "Wireless Earbuds",
+      price: 99.99,
+      originalPrice: 129.99,
+      image: "https://images.unsplash.com/photo-1512499617640-c2f999098c01",
+      rating: 4.7,
+      reviews: 88,
+      badge: "Bestseller"
+    },
+    {
+      id: 12,
+      name: "Ceramic Vase Set",
+      price: 49.99,
+      originalPrice: 69.99,
+      image: "https://images.unsplash.com/photo-1464983953574-0892a716854b",
+      rating: 4.5,
+      reviews: 47,
+      badge: "Premium"
+    },
+    {
+      id: 13,
+      name: "Portable Projector",
+      price: 299.99,
+      originalPrice: 349.99,
+      image: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2",
+      rating: 4.8,
+      reviews: 73,
+      badge: "Hot"
+    },
+    {
+      id: 14,
+      name: "Minimalist Wall Clock",
+      price: 39.99,
+      originalPrice: 49.99,
+      image: "https://images.unsplash.com/photo-1465101178521-c1a9136a3b99",
+      rating: 4.3,
+      reviews: 39,
+      badge: "New"
+    },
+    {
+      id: 15,
+      name: "Smart Home Hub",
+      price: 129.99,
+      originalPrice: 159.99,
+      image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8",
+      rating: 4.6,
+      reviews: 65,
+      badge: "Trending"
+    },
+    {
+      id: 16,
+      name: "Luxury Throw Blanket",
+      price: 79.99,
+      originalPrice: 99.99,
+      image: "https://images.unsplash.com/photo-1465101046530-73398c7f28ca",
+      rating: 4.7,
+      reviews: 58,
+      badge: "Premium"
+    },
+    {
+      id: 17,
+      name: "Handcrafted Wooden Bowl",
+      price: 34.99,
+      originalPrice: 44.99,
+      image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb",
+      rating: 4.5,
+      reviews: 42,
+      badge: "Eco"
+    },
+    {
+      id: 18,
+      name: "Elegant Pendant Light",
+      price: 199.99,
+      originalPrice: 249.99,
+      image: "https://images.unsplash.com/photo-1465101178521-c1a9136a3b99",
+      rating: 4.8,
+      reviews: 51,
+      badge: "Hot"
+    },
   ];
+
+  const [showAll, setShowAll] = useState(false);
+  const products = showAll ? allProducts : allProducts.slice(0, 6);
 
   const getBadgeStyle = (badge) => {
     switch (badge) {
@@ -178,15 +300,18 @@ const TrendingProducts = () => {
         </div>
 
         {/* View All Button */}
-        <div className="text-center mt-12">
-          <Button 
-            size="lg" 
-            variant="outline" 
-            className="border-[#D4A373] text-[#D4A373] hover:bg-[#D4A373] hover:text-white px-8 py-3 rounded-full transition-all duration-300"
-          >
-            View All Products
-          </Button>
-        </div>
+        {!showAll && (
+          <div className="text-center mt-12">
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="border-[#D4A373] text-[#D4A373] hover:bg-[#D4A373] hover:text-white px-8 py-3 rounded-full transition-all duration-300"
+              onClick={() => setShowAll(true)}
+            >
+              View All Products
+            </Button>
+          </div>
+        )}
       </div>
     </section>
   );
