@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const HeroSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -12,6 +13,7 @@ const HeroSection = () => {
       subtitle: "Discover Luxury",
       description: "Where Everything You Buy Feels Premium",
       cta: "Shop Now",
+      ctaLink: "/categories",
       image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8",
       overlay: "bg-black/40"
     },
@@ -20,6 +22,7 @@ const HeroSection = () => {
       subtitle: "Fresh & Modern",
       description: "Curated selections for the modern lifestyle",
       cta: "Explore",
+      ctaLink: "/search",
       image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43",
       overlay: "bg-black/30"
     },
@@ -28,6 +31,7 @@ const HeroSection = () => {
       subtitle: "Exclusive Designs",
       description: "Unique pieces for the discerning customer",
       cta: "View Collection",
+      ctaLink: "/categories",
       image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7",
       overlay: "bg-black/35"
     }
@@ -79,12 +83,14 @@ const HeroSection = () => {
                 <p className="text-lg md:text-xl mb-8 opacity-90 max-w-2xl mx-auto animate-fade-in">
                   {slide.description}
                 </p>
-                <Button 
-                  size="lg" 
-                  className="bg-[#D4A373] hover:bg-[#D4A373]/90 text-white px-8 py-4 text-lg font-semibold rounded-full transition-all duration-300 hover:scale-105 animate-fade-in"
-                >
-                  {slide.cta}
-                </Button>
+                <Link to={slide.ctaLink}>
+                  <Button 
+                    size="lg" 
+                    className="bg-[#D4A373] hover:bg-[#D4A373]/90 text-white px-8 py-4 text-lg font-semibold rounded-full transition-all duration-300 hover:scale-105 animate-fade-in"
+                  >
+                    {slide.cta}
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>

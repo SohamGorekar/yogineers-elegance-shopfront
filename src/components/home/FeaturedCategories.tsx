@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
 const FeaturedCategories = () => {
   const categories = [
@@ -51,7 +52,7 @@ const FeaturedCategories = () => {
         {/* Featured Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {/* Main Featured Category */}
-          <div className="md:col-span-2 lg:row-span-2 relative group cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500">
+          <Link to="/categories" className="md:col-span-2 lg:row-span-2 relative group cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500">
             <img
               src={categories[0].image}
               alt={categories[0].name}
@@ -69,12 +70,13 @@ const FeaturedCategories = () => {
                 Shop Now
               </Button>
             </div>
-          </div>
+          </Link>
 
           {/* Secondary Categories */}
           {categories.slice(1).map((category, index) => (
-            <div
+            <Link
               key={category.name}
+              to="/categories"
               className="relative group cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 h-80"
             >
               <img
@@ -96,19 +98,21 @@ const FeaturedCategories = () => {
                   View
                 </Button>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 
         {/* View All Categories Button */}
         <div className="text-center">
-          <Button 
-            size="lg" 
-            variant="outline" 
-            className="border-[#D4A373] text-[#D4A373] hover:bg-[#D4A373] hover:text-white px-8 py-3 rounded-full transition-all duration-300"
-          >
-            View All Categories
-          </Button>
+          <Link to="/categories">
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="border-[#D4A373] text-[#D4A373] hover:bg-[#D4A373] hover:text-white px-8 py-3 rounded-full transition-all duration-300"
+            >
+              View All Categories
+            </Button>
+          </Link>
         </div>
       </div>
     </section>
